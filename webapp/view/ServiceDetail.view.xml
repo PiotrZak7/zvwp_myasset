@@ -1,0 +1,47 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.zvwp.asset.myasset.zvwp_asset_myasset.controller.ServiceDetail" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:f="sap.ui.layout.form">
+	<App>
+		<pages>
+			<Page title="Title" showNavButton="true" navButtonPress="onNavBack" class="sapUiResponsiveContentPadding">
+				<content>
+					<Panel id="servicePanel" width="auto" class="sapUiNoContentPadding">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{Service} {RepairDesc}" level="H2"/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1"
+								columnsM="1">
+								<f:content>
+									<Label text="Contact Person"/>
+									<Text text="{ContactName}"/>
+									<Label text="ID Asset"/>
+									<Text text="{IdAsset}"/>
+									<Label text="{Reapair Descriton}"/>
+									<Text text="{RepairDesc}"/>
+									<Label text="Damage descriton"/>
+									<Text text="{DemageDesc}"/>
+									<Label text="Status"/>
+									<Text text="{Status}"/>
+									<Label text="Work time"/>
+									<Text text="{WorkTime}"/>
+									<Label text="Rating" labelFor="RI_L"/>
+									<RatingIndicator id="RI_L" maxValue="5" class="sapUiSmallMarginBottom" value="4" iconSize="32px" tooltip="Rating Tooltip"/>
+								</f:content>
+							</f:SimpleForm>
+						</content>
+					</Panel>
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Save"/>
+						<Button type="Reject" text="Cancel"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

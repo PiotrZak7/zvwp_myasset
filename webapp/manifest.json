@@ -89,23 +89,26 @@
 				},
 				"async": true
 			},
-			"routes": [
-				{
+			"routes": [{
 					"pattern": "",
 					"name": "master",
 					"target": [
 						"object",
 						"master"
 					]
-				},
-				{
+				}, {
 					"pattern": "MyAssetSet/{objectId}",
 					"name": "object",
 					"target": [
 						"master",
 						"object"
 					]
+				}, {
+					"pattern": "services/{serviceId}",
+					"name": "service",
+					"target": "service"
 				}
+
 			],
 			"targets": {
 				"master": {
@@ -130,6 +133,11 @@
 				"notFound": {
 					"viewName": "NotFound",
 					"viewId": "notFound"
+				},
+				"service": {
+					"viewType": "XML",
+					"viewName": "ServiceDetail",
+					"viewLevel": 3
 				}
 			}
 		}

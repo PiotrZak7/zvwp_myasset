@@ -55,7 +55,7 @@ sap.ui.define([
 			oItem = oEvent.getSource();
 			oCtx = oItem.getBindingContext();
 
-			this.getRouter().navTo("employee", {
+			this.getRouter().navTo("service", {
 				serviceId: oCtx.getProperty("IdService")
 			});
 
@@ -183,19 +183,13 @@ sap.ui.define([
 		_onMetadataLoaded: function () {
 			// Store original busy indicator delay for the detail view
 			var iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
-				oViewModel = this.getModel("detailView"),
-				oLineItemTable = this.byId("lineItemsList"),
-				iOriginalLineItemTableBusyDelay = oLineItemTable.getBusyIndicatorDelay();
+				oViewModel = this.getModel("detailView");
 
 			// Make sure busy indicator is displayed immediately when
 			// detail view is displayed for the first time
 			oViewModel.setProperty("/delay", 0);
 			oViewModel.setProperty("/lineItemTableDelay", 0);
 
-			oLineItemTable.attachEventOnce("updateFinished", function () {
-				// Restore original busy indicator delay for line item table
-				oViewModel.setProperty("/lineItemTableDelay", iOriginalLineItemTableBusyDelay);
-			});
 
 			// Binding the view will set it to not busy - so the view is always busy if it is not bound
 			oViewModel.setProperty("/busy", true);

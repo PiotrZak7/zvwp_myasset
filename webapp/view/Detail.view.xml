@@ -29,7 +29,7 @@
 			</f:SimpleForm>
 			<List id="devList" headerText="{detailView>/lineItemListTitle}" items="{ToServices}" updateFinished=".onListUpdateFinished">
 				<items>
-					<StandardListItem title="{IdService} {ServiceName}" iconInset="false" icon="sap-icon://wrench" iconDensityAware="false" type="Navigation"
+					<StandardListItem title="{IdService} {ServiceName} {RepairDesc}" iconInset="false" icon="sap-icon://wrench" iconDensityAware="false" type="Navigation"
 						press="onListItemPressed"/>
 				</items>
 			</List>
