@@ -24,8 +24,7 @@
 					<Label text="{i18n>formPostalCode}"/>
 					<Text text="{PostalCode}"/>
 					<Label text="{i18n>formPhoneHome}"/>
-					<Text text="{HomePhone}"/>
-
+					<Text text="{HomePhonae}"/>
 				</f:content>
 			</f:SimpleForm>
 			<List id="devList" headerText="{detailView>/lineItemListTitle}" items="{ToServices}" updateFinished=".onListUpdateFinished">
