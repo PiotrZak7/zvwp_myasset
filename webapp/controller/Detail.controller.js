@@ -48,6 +48,21 @@ sap.ui.define([
 				oViewModel.getProperty("/shareSendEmailMessage")
 			);
 		},
+		
+		_getDialog: function () {
+			if (!this._oDialog) {
+				this._oDialog = sap.ui.xmlfragment("com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.DeviceRequest", this);
+				this.getView().addDependent(this._oDialog);
+			}
+			return this._oDialog;
+		},
+		
+		onNewServicePress: function (oEvent) {
+			this._getDialog().open();
+		},
+		onNewService: function (oEvent) {
+
+		},
 
 		onListItemPressed: function (oEvent) {
 			var oItem, oCtx;
@@ -189,7 +204,6 @@ sap.ui.define([
 			// detail view is displayed for the first time
 			oViewModel.setProperty("/delay", 0);
 			oViewModel.setProperty("/lineItemTableDelay", 0);
-
 
 			// Binding the view will set it to not busy - so the view is always busy if it is not bound
 			oViewModel.setProperty("/busy", true);

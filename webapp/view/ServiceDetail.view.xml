@@ -29,7 +29,7 @@
 									<Text text="{WorkTime}"/>
 									<Label text="Rating" labelFor="RI_L"/>
 									<RatingIndicator id="riRaiting" editable="{= ${Rating} !== null }" maxValue="5" class="sapUiSmallMarginBottom"
-										value="0" iconSize="32px" tooltip="Rate service"/>
+										value="0" iconSize="22px" tooltip="Rate service"/>
 								</f:content>
 							</f:SimpleForm>
 						</content>

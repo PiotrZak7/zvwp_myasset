@@ -3,7 +3,7 @@
 	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
-			<ObjectHeader id="objectHeader" title="{Name}">
+			<ObjectHeader id="objectHeader" title="{Name}" icon="{/ToPhoto}" iconDensityAware="false">
 				<attributes>
 					<ObjectAttribute title="ID Asset" text="{IdAsset}"/>
 					<ObjectAttribute title="Created on" text="{path: 'Begda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
@@ -26,8 +26,11 @@
 				</items>
 			</List>
 		</semantic:content>
+		<semantic:customFooterContent>
+			<Button visible="true" text="Create service" enabled="true" icon="sap-icon://wrench" press="onNewServicePress" type="Reject"></Button>
+		</semantic:customFooterContent>
 		<semantic:positiveAction>
-			<semantic:PositiveAction text="Create service"/>
+			<semantic:PositiveAction text="Potwierdz dla inwentury"/>
 		</semantic:positiveAction>
 	</semantic:DetailPage>
 </mvc:View>
