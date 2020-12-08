@@ -1,32 +1,24 @@
 <mvc:View controllerName="com.zvwp.asset.myasset.zvwp_asset_myasset.controller.Detail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form">
+	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
 	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
-			<ObjectHeader id="objectHeader" title="{Name}"></ObjectHeader>
+			<ObjectHeader id="objectHeader" title="{Name}">
+				<attributes>
+					<ObjectAttribute title="ID Asset" text="{IdAsset}"/>
+					<ObjectAttribute title="Created on" text="{path: 'Begda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
+				</attributes>
+			</ObjectHeader>
 			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
 				<items>
-					<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}"></IconTabFilter>
-					<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://employee" tooltip="{i18n>detailIconTabBarAttachments}"></IconTabFilter>
+					<IconTabFilter id="iconTabBarFilter1" text="Device info" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}">
+						<core:Fragment fragmentName="com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.DeviceOverview" id="fragmentDeviceOverview" type="XML"/>
+					</IconTabFilter>
+					<IconTabFilter id="iconTabBarFilter2" text="User info" icon="sap-icon://employee" tooltip="{i18n>detailIconTabBarAttachments}">
+						<core:Fragment fragmentName="com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.UserOverview" id="fragmentUserOverview" type="XML"/>
+					</IconTabFilter>
 				</items>
 			</IconTabBar>
-			<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1"
-				columnsM="1">
-				<f:content>
-					<Label text="{i18n>formFirstName}"/>
-					<Text text="{FirstName}"/>
-					<Label text="{i18n>formLastName}"/>
-					<Text text="{LastName}"/>
-					<Label text="{i18n>formAddress}"/>
-					<Text text="{Address}"/>
-					<Label text="{i18n>formCity}"/>
-					<Text text="{City}, {Region}"/>
-					<Label text="{i18n>formPostalCode}"/>
-					<Text text="{PostalCode}"/>
-					<Label text="{i18n>formPhoneHome}"/>
-					<Text text="{HomePhonae}"/>
-				</f:content>
-			</f:SimpleForm>
 			<List id="devList" headerText="{detailView>/lineItemListTitle}" items="{ToServices}" updateFinished=".onListUpdateFinished">
 				<items>
 					<StandardListItem title="{IdService} {ServiceName} {RepairDesc}" iconInset="false" icon="sap-icon://wrench" iconDensityAware="false"
@@ -37,6 +29,5 @@
 		<semantic:positiveAction>
 			<semantic:PositiveAction text="Create service"/>
 		</semantic:positiveAction>
-
 	</semantic:DetailPage>
 </mvc:View>

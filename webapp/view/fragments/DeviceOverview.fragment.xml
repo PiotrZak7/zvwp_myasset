@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<VBox class="sapUiResponsiveMargin">
+		<!-- Create Request for Cert -->
+		<f:SimpleForm id="sfDeviceOverview" editable="true" layout="ResponsiveGridLayout" labelSpanXL="-1"
+			emptySpanXL="-1" columnsXL="-1" labelSpanL="3" emptySpanL="4" columnsL="1" labelSpanM="3" emptySpanM="4" columnsM="1" labelSpanS="12"
+			emptySpanS="0" adjustLabelSpan="false" singleContainerFullSize="true">
+			<f:content>
+				<Label text="Type"/>
+				<Text text="{creator_name}"/>
+				<Label text="Tech spec"/>
+				<Text text="{pernr}"/>
+				<Label text="CPU"/>
+				<Text id="nameText1" text="{cert_type_name}"/>
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+</core:FragmentDefinition>

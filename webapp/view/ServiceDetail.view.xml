@@ -28,7 +28,8 @@
 									<Label text="Work time"/>
 									<Text text="{WorkTime}"/>
 									<Label text="Rating" labelFor="RI_L"/>
-									<RatingIndicator id="RI_L" maxValue="5" class="sapUiSmallMarginBottom" value="4" iconSize="32px" tooltip="Rating Tooltip"/>
+									<RatingIndicator id="riRaiting" editable="{= ${Rating} !== null }" maxValue="5" class="sapUiSmallMarginBottom"
+										value="0" iconSize="32px" tooltip="Rate service"/>
 								</f:content>
 							</f:SimpleForm>
 						</content>
