@@ -2,8 +2,10 @@
 sap.ui.define([
 	"com/zvwp/asset/myasset/zvwp_asset_myasset/controller/BaseController",
 	"sap/ui/model/json/JSONModel",
-	"com/zvwp/asset/myasset/zvwp_asset_myasset/model/formatter"
-], function (BaseController, JSONModel, formatter) {
+	"com/zvwp/asset/myasset/zvwp_asset_myasset/model/formatter",
+	"sap/m/MessageToast",
+	"sap/m/MessageBox"
+], function (BaseController, JSONModel, formatter, MessageToast, MessageBox) {
 	"use strict";
 
 	return BaseController.extend("com.zvwp.asset.myasset.zvwp_asset_myasset.controller.Detail", {
@@ -48,20 +50,74 @@ sap.ui.define([
 				oViewModel.getProperty("/shareSendEmailMessage")
 			);
 		},
-		
+
 		_getDialog: function () {
 			if (!this._oDialog) {
-				this._oDialog = sap.ui.xmlfragment("com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.DeviceRequest", this);
+				this._oDialog = sap.ui.xmlfragment("newService", "com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.DeviceRequest", this);
 				this.getView().addDependent(this._oDialog);
 			}
 			return this._oDialog;
 		},
-		
+
 		onNewServicePress: function (oEvent) {
 			this._getDialog().open();
 		},
 		onNewService: function (oEvent) {
+			var oModel = this.getModel();
 
+			var oAsset = sap.ui.core.Fragment.byId("newService", "txtAsset");
+			var oDamageDesc = sap.ui.core.Fragment.byId("newService", "taDescription");
+			var oDialog = sap.ui.core.Fragment.byId("newService", "NewDeviceService");
+
+			var oNewServiceEntry = {
+				"IdAsset": oAsset.getText(),
+				"Requestor": "",
+				"Serviceman": "",
+				"ContactName": "",
+				"PhoneNo": "",
+				"DemageDesc": oDamageDesc.getValue(),
+				"RequestedOn": new Date(),
+				"TakenOverOn": null,
+				"ClosedOn": null,
+				"ServiceToActionNav": []
+
+			};
+
+			// var oRequestModel = new JSONModel(oNewServiceEntry);
+			// this.getView().setModel(oRequestModel, "newServiceModel");
+
+			// var oNewServiceDeepEntry = this.getView().getModel("newServiceModel").getData();
+			// 	var oModel = this.getOwnerComponent().getModel();
+
+			oDialog.setBusy(true);
+			oModel.create("/ServiceSet", oNewServiceEntry, {
+				success: function (oResponse) {
+
+					MessageToast.show("Create done!");
+					oDialog.setBusy(false);
+
+					this._oDialog.close();
+				}.bind(this),
+				error: function (oError) {
+					oDialog.setBusy(false);
+					// 	var sErrorText = JSON.parse(oError.responseText).error.message.value;
+					// 	MessageBox.show(sErrorText, {
+					// 		icon: sap.m.MessageBox.Icon.ERROR,
+					// 		title: this.getResourceBundle().getText("errorType"),
+					// 		actions: [sap.m.MessageBox.Action.CLOSE]
+					// 	});
+				}.bind(this)
+			});
+
+		},
+
+		onInweturaPress: function (oEvent) {
+			MessageBox.show("Inwentura potwierdzona", {
+				onClose: function () {
+
+				}.bind(this)
+
+			});
 		},
 
 		onListItemPressed: function (oEvent) {

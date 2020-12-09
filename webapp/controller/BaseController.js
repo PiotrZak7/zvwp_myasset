@@ -28,6 +28,10 @@ sap.ui.define([
 		onCloseDialog: function (oEvent) {
 			this._oDialog.close();
 		},
+		dialogAfterclose: function (oEvent) {
+			this._oDialog.destroy();
+			this._oDialog = null;
+		},
 
 		/**
 		 * Convenience method for setting the view model in every controller of the application.

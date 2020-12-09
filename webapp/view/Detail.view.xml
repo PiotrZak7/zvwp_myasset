@@ -30,7 +30,7 @@
 			<Button visible="true" text="Create service" enabled="true" icon="sap-icon://wrench" press="onNewServicePress" type="Reject"></Button>
 		</semantic:customFooterContent>
 		<semantic:positiveAction>
-			<semantic:PositiveAction text="Potwierdz dla inwentury"/>
+			<semantic:PositiveAction text="Potwierdz dla inwentury" press="onInweturaPress" />
 		</semantic:positiveAction>
 	</semantic:DetailPage>
 </mvc:View>

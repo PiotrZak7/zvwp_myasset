@@ -1,10 +1,10 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc">
-	<Dialog  id="NewDeviceService" title="New service" afterClose="dialogAfterclose">
+	<Dialog id="NewDeviceService" title="New service" afterClose="dialogAfterclose">
 		<f:SimpleForm>
 			<Label text="ID Asset"></Label>
-			<Text text="{IdAsset}"></Text>
-			<Label  text="Opis usterki"></Label>
-			<TextArea  rows="3" maxLength="60"></TextArea>
+			<Text id="txtAsset" text="{IdAsset}"></Text>
+			<Label text="Opis usterki"></Label>
+			<TextArea id="taDescription" rows="4" maxLength='255'></TextArea>
 		</f:SimpleForm>
 		<beginButton>
 			<Button text="Send request" press="onNewService" type="Accept"/>
