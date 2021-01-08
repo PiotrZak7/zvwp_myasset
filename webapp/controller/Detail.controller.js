@@ -71,7 +71,8 @@ sap.ui.define([
 
 			var oNewServiceEntry = {
 				"IdAsset": oAsset.getText(),
-				"Requestor": "",
+				// "Requestor":  sap.ushell.Container.getService("UserInfo").getId() ,
+				"Requestor":  "DLXPSFN" ,
 				"Serviceman": "",
 				"ContactName": "",
 				"PhoneNo": "",

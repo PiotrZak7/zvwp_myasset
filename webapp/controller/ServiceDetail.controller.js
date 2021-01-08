@@ -1,6 +1,7 @@
 sap.ui.define([
-		"com/zvwp/asset/myasset/zvwp_asset_myasset/controller/BaseController"
-], function (BaseController) {
+	"com/zvwp/asset/myasset/zvwp_asset_myasset/controller/BaseController",
+	"com/zvwp/asset/myasset/zvwp_asset_myasset/model/formatter"
+], function (BaseController, formatter) {
 	"use strict";
 
 	return BaseController.extend("com.zvwp.asset.myasset.zvwp_asset_myasset.controller.ServiceDetail", {
@@ -10,6 +11,8 @@ sap.ui.define([
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf com.zvwp.asset.myasset.zvwp_asset_myasset.view.ServiceDetail
 		 */
+
+		formatter: formatter,
 		onInit: function () {
 			var oRouter = this.getRouter();
 
@@ -33,6 +36,39 @@ sap.ui.define([
 					}
 				}
 			});
+		},
+
+		onRateSave: function (oEvent) {
+			var oModel = this.getModel();
+			var oControlRi = sap.ui.core.Fragment.byId("rateService", "riRaitingNew");
+			var oValueControl = oControlRi.getValue();
+			var oValueObject = this.getView().getBindingContext().getObject();
+
+			oValueObject.Rating = oControlRi.getValue().toString();
+			if (oValueControl) {
+				oModel.update(this.getView().getBindingContext().getPath(), oValueObject, {
+					success: function (oData) {
+						this.onCloseDialog();
+
+					}.bind(this),
+					error: function () {
+
+					}.bind(this)
+				});
+			}
+
+		},
+
+		_getDialog: function () {
+			if (!this._oDialog) {
+				this._oDialog = sap.ui.xmlfragment("rateService", "com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.ServiceRate", this);
+				this.getView().addDependent(this._oDialog);
+			}
+			return this._oDialog;
+		},
+
+		onPressRateService: function (oEvent) {
+			this._getDialog().open();
 		},
 
 		_onBindingChange: function (oEvent) {

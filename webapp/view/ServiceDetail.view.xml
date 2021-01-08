@@ -8,7 +8,7 @@
 					<Panel id="servicePanel" width="auto" class="sapUiNoContentPadding">
 						<headerToolbar>
 							<Toolbar>
-								<Title text="{Service} {RepairDesc}" level="H2"/>
+								<Title text="{IdService} - {DemageDesc}" level="H2"/>
 							</Toolbar>
 						</headerToolbar>
 						<content>
@@ -19,17 +19,18 @@
 									<Text text="{ContactName}"/>
 									<Label text="ID Asset"/>
 									<Text text="{IdAsset}"/>
-									<Label text="{Reapair Descriton}"/>
+									<Label text="Repair Descripton"/>
 									<Text text="{RepairDesc}"/>
-									<Label text="Damage descriton"/>
+									<Label text="Damage description"/>
 									<Text text="{DemageDesc}"/>
-									<Label text="Status"/>
-									<Text text="{Status}"/>
 									<Label text="Work time"/>
 									<Text text="{WorkTime}"/>
+									<Label text="Status"/>
+									<ObjectStatus text="{path: 'Status', formatter: '.formatter.formatStatusName'}"
+										state="{path: 'Status', formatter: '.formatter.formatStatus'}"/>
 									<Label text="Rating" labelFor="RI_L"/>
-									<RatingIndicator id="riRaiting" editable="{= ${Rating} !== null }" maxValue="5" class="sapUiSmallMarginBottom"
-										value="0" iconSize="22px" tooltip="Rate service"/>
+									<RatingIndicator id="riRaiting" displayOnly="true" maxValue="5" class="sapUiSmallMarginBottom"
+										value="{path: 'Rating', formatter : '.formatter.parseFloat'}" iconSize="22px"/>
 								</f:content>
 							</f:SimpleForm>
 						</content>
@@ -38,8 +39,7 @@
 				<footer>
 					<OverflowToolbar>
 						<ToolbarSpacer/>
-						<Button type="Accept" text="Save"/>
-						<Button type="Reject" text="Cancel"/>
+						<Button type="Accept" tooltip ="Rate service after service close" text="{i18n>rateService}" press="onPressRateService" enabled="{= ${Rating} === '0' }"/>
 					</OverflowToolbar>
 				</footer>
 			</Page>

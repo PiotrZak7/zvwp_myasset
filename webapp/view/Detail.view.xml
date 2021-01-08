@@ -21,8 +21,9 @@
 			</IconTabBar>
 			<List id="devList" headerText="{detailView>/lineItemListTitle}" items="{ToServices}" updateFinished=".onListUpdateFinished">
 				<items>
-					<StandardListItem title="{IdService} {ServiceName} {RepairDesc}" iconInset="false" icon="sap-icon://wrench" iconDensityAware="false"
-						type="Navigation" press="onListItemPressed"/>
+					<StandardListItem title="{IdService} {DemageDesc} {Status}" iconInset="false" icon="sap-icon://wrench" iconDensityAware="false"
+						type="Navigation" press="onListItemPressed" info="{path: 'Status', formatter: '.formatter.formatStatusName'}"
+						infoState="{path: 'Status', formatter: '.formatter.formatStatus'}"/>
 				</items>
 			</List>
 		</semantic:content>
@@ -30,7 +31,7 @@
 			<Button visible="true" text="Create service" enabled="true" icon="sap-icon://wrench" press="onNewServicePress" type="Reject"></Button>
 		</semantic:customFooterContent>
 		<semantic:positiveAction>
-			<semantic:PositiveAction text="Potwierdz dla inwentury" press="onInweturaPress" />
+			<semantic:PositiveAction text="Potwierdz dla inwentury" enabled="false" press="onInweturaPress"/>
 		</semantic:positiveAction>
 	</semantic:DetailPage>
 </mvc:View>
