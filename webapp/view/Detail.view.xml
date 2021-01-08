@@ -23,7 +23,7 @@
 				<items>
 					<StandardListItem title="{IdService} {DemageDesc} {Status}" iconInset="false" icon="sap-icon://wrench" iconDensityAware="false"
 						type="Navigation" press="onListItemPressed" info="{path: 'Status', formatter: '.formatter.formatStatusName'}"
-						infoState="{path: 'Status', formatter: '.formatter.formatStatus'}"/>
+						infoState="{path: 'Status', formatter: '.formatter.formatStatus'}" />
 				</items>
 			</List>
 		</semantic:content>
