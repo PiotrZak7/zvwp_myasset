@@ -3,7 +3,7 @@
 	xmlns:f="sap.ui.layout.form">
 	<App>
 		<pages>
-			<Page title="Title" showNavButton="true" navButtonPress="onNavBack" class="sapUiResponsiveContentPadding">
+			<Page title="Informacje o serwisie" showNavButton="true" navButtonPress="onNavBack" class="sapUiResponsiveContentPadding">
 				<content>
 					<Panel id="servicePanel" width="auto" class="sapUiNoContentPadding">
 						<headerToolbar>
@@ -15,20 +15,22 @@
 							<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1"
 								columnsM="1">
 								<f:content>
-									<Label text="Contact Person"/>
-									<Text text="{ContactName}"/>
-									<Label text="ID Asset"/>
+									<Label text="{i18n>ContactPerson}"/>
+									<Text text="{RequestorName}"/>
+									<Label text="{i18n>idAsset}"/>
 									<Text text="{IdAsset}"/>
-									<Label text="Repair Descripton"/>
+									<Label text="{i18n>RepairDesc}"/>
 									<Text text="{RepairDesc}"/>
-									<Label text="Damage description"/>
+									<Label text="{i18n>DamageDesc}"/>
 									<Text text="{DemageDesc}"/>
-									<Label text="Work time"/>
+									<Label text="{i18n>Worktime}"/>
 									<Text text="{WorkTime}"/>
 									<Label text="Status"/>
 									<ObjectStatus text="{path: 'Status', formatter: '.formatter.formatStatusName'}"
 										state="{path: 'Status', formatter: '.formatter.formatStatus'}"/>
-									<Label text="Rating" labelFor="RI_L"/>
+									<Label text="{i18n>ServiceMan}"/>
+									<Text text="{ServicemanName}"/>
+									<Label text="{i18n>Rating}" labelFor="RI_L"/>
 									<RatingIndicator id="riRaiting" displayOnly="true" maxValue="5" class="sapUiSmallMarginBottom"
 										value="{path: 'Rating', formatter : '.formatter.parseFloat'}" iconSize="22px"/>
 								</f:content>
@@ -39,7 +41,7 @@
 				<footer>
 					<OverflowToolbar>
 						<ToolbarSpacer/>
-						<Button type="Accept" tooltip ="Rate service after service close" text="{i18n>rateService}" press="onPressRateService" enabled="{= ${Rating} === '0' }"/>
+						<Button type="Accept" tooltip="Rate service after service close" text="{i18n>rateService}" press="onPressRateService" enabled="true"/>
 					</OverflowToolbar>
 				</footer>
 			</Page>

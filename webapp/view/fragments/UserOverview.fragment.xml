@@ -5,12 +5,13 @@
 			labelSpanL="3" emptySpanL="4" columnsL="1" labelSpanM="3" emptySpanM="4" columnsM="1" labelSpanS="12" emptySpanS="0" adjustLabelSpan="false"
 			singleContainerFullSize="true">
 			<f:content>
-				<Label text="Created on"/>
+				<Label text="{i18n>CreateOn}"/>
 				<Text text="{path: 'Begda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
-				<Label text="Leasing"/>
-				<Text text="{pernr}"/>
-				<Label text="Valid to"/>
+				<Label text="{i18n>ValidTo}"/>
 				<Text text="{path: 'Endda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
+				<Label text="{i18n>leasing}"/>
+				<Text text="{= ${IdLeasing} === true ? 'Tak' : 'Nie' }"/>
+				
 			</f:content>
 		</f:SimpleForm>
 	</VBox>

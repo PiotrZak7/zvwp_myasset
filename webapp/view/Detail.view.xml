@@ -5,33 +5,33 @@
 		<semantic:content>
 			<ObjectHeader id="objectHeader" title="{Name}" icon="{/ToPhoto}" iconDensityAware="false">
 				<attributes>
-					<ObjectAttribute title="ID Asset" text="{IdAsset}"/>
-					<ObjectAttribute title="Created on" text="{path: 'Begda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
+					<ObjectAttribute title="{i18n>idAsset}" text="{IdAsset}"/>
+					<ObjectAttribute title="{i18n>CreateOn}" text="{path: 'Begda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
 				</attributes>
 			</ObjectHeader>
 			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
 				<items>
-					<IconTabFilter id="iconTabBarFilter1" text="Device info" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}">
+					<IconTabFilter id="iconTabBarFilter1" text="{i18n>DeviceInfo}" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}">
 						<core:Fragment fragmentName="com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.DeviceOverview" id="fragmentDeviceOverview" type="XML"/>
 					</IconTabFilter>
-					<IconTabFilter id="iconTabBarFilter2" text="User info" icon="sap-icon://employee" tooltip="{i18n>detailIconTabBarAttachments}">
+					<IconTabFilter id="iconTabBarFilter2" text="{i18n>UserInfo}" icon="sap-icon://employee" tooltip="{i18n>detailIconTabBarAttachments}">
 						<core:Fragment fragmentName="com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.UserOverview" id="fragmentUserOverview" type="XML"/>
 					</IconTabFilter>
 				</items>
 			</IconTabBar>
 			<List id="devList" headerText="{detailView>/lineItemListTitle}" items="{ToServices}" updateFinished=".onListUpdateFinished">
 				<items>
-					<StandardListItem title="{IdService} {DemageDesc} {Status}" iconInset="false" icon="sap-icon://wrench" iconDensityAware="false"
+					<StandardListItem title="{IdService} {DemageDesc}" iconInset="false" icon="sap-icon://wrench" iconDensityAware="false"
 						type="Navigation" press="onListItemPressed" info="{path: 'Status', formatter: '.formatter.formatStatusName'}"
-						infoState="{path: 'Status', formatter: '.formatter.formatStatus'}" />
+						infoState="{path: 'Status', formatter: '.formatter.formatStatus'}"/>
 				</items>
 			</List>
 		</semantic:content>
 		<semantic:customFooterContent>
-			<Button visible="true" text="Create service" enabled="true" icon="sap-icon://wrench" press="onNewServicePress" type="Reject"></Button>
+			<Button visible="true" text="{i18n>CreateService}" enabled="true" icon="sap-icon://wrench" press="onNewServicePress" type="Reject"></Button>
 		</semantic:customFooterContent>
 		<semantic:positiveAction>
-			<semantic:PositiveAction text="Potwierdz dla inwentury" enabled="false" press="onInweturaPress"/>
+			<semantic:PositiveAction text="Potwierdz dla inwentury" enabled="{= ${Rating} === '1' }" press="onInweturaPress"/>
 		</semantic:positiveAction>
 	</semantic:DetailPage>
 </mvc:View>
