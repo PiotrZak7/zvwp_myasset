@@ -51,16 +51,37 @@ sap.ui.define([
 			);
 		},
 
-		_getDialog: function () {
+		_getDialog: function (oDialogType) {
 			if (!this._oDialog) {
-				this._oDialog = sap.ui.xmlfragment("newService", "com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.DeviceRequest", this);
+				if (oDialogType === 'Service') {
+					this._oDialog = sap.ui.xmlfragment("newService", "com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.DeviceRequest", this);
+				} else {
+					this._oDialog = sap.ui.xmlfragment("newRateProduct", "com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.ProductRate", this);
+				}
+
 				this.getView().addDependent(this._oDialog);
 			}
 			return this._oDialog;
 		},
 
 		onNewServicePress: function (oEvent) {
-			this._getDialog().open();
+			this._getDialog('Service').open();
+		},
+
+		onOpinionPress: function (oEvent) {
+			this._getDialog('Opinion').open();
+		},
+		onRateProductSave: function (oEvent) {
+			var oModel = this.getModel();
+
+			var oIDItem = sap.ui.core.Fragment.byId("newRateProduct", "txtItem");
+			var oDescRate = sap.ui.core.Fragment.byId("newRateProduct", "txtRateDesc");
+			var oRateNumber = sap.ui.core.Fragment.byId("newRateProduct", "riRaitingProduct");
+			
+			oIDItem.getText();
+			oDescRate.getValue();
+			oRateNumber.getValue();
+
 		},
 		onNewService: function (oEvent) {
 			var oModel = this.getModel();
@@ -72,7 +93,7 @@ sap.ui.define([
 			var oNewServiceEntry = {
 				"IdAsset": oAsset.getText(),
 				// "Requestor":  sap.ushell.Container.getService("UserInfo").getId() ,
-				"Requestor":  "DLXPSFN" ,
+				"Requestor": "DLXPSFN",
 				"Serviceman": "",
 				"ContactName": "",
 				"PhoneNo": "",

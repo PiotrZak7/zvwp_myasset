@@ -89,26 +89,28 @@
 				},
 				"async": true
 			},
-			"routes": [{
+			"routes": [
+				{
 					"pattern": "",
 					"name": "master",
 					"target": [
 						"object",
 						"master"
 					]
-				}, {
+				},
+				{
 					"pattern": "MyAssetSet/{objectId}",
 					"name": "object",
 					"target": [
 						"master",
 						"object"
 					]
-				}, {
+				},
+				{
 					"pattern": "services/{serviceId}",
 					"name": "service",
 					"target": "service"
 				}
-
 			],
 			"targets": {
 				"master": {
@@ -141,5 +143,9 @@
 				}
 			}
 		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zvwp_asset_myat/webapp",
+		"_version": "1.1.0"
 	}
 }

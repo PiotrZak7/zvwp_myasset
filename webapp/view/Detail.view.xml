@@ -33,5 +33,8 @@
 		<semantic:positiveAction>
 			<semantic:PositiveAction text="Potwierdz dla inwentury" enabled="{= ${Rating} === '1' }" press="onInweturaPress"/>
 		</semantic:positiveAction>
+		<semantic:positiveAction>
+			<semantic:PositiveAction text="Wystaw opinię" press="onOpinionPress"/>
+		</semantic:positiveAction>
 	</semantic:DetailPage>
 </mvc:View>

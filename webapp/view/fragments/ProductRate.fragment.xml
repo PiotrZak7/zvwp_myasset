@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable">
+	<Dialog id="productOpinionDiag" title="{i18n>RateProduct}" afterClose="dialogAfterclose">
+		<f:SimpleForm>
+			<Label text="{i18n>idItem}"></Label>
+			<Text id="txtItem" text="{IdItem}"></Text>
+			<Label text="{i18n>Rate}"></Label>
+			<RatingIndicator id="riRaitingProduct" maxValue="5" class="sapUiSmallMarginBottom" value="0.0" iconSize="22px" tooltip="Rate service"/>
+			<Label text="{i18n>RateText}"></Label>
+			<TextArea id="txtRateDesc" placeholder="{i18n>EnterOpinion}"  maxLength="255"/>
+		</f:SimpleForm>
+		<beginButton>
+			<Button text="{i18n>SaveVote}" press="onRateProductSave" type="Accept"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>cancel}" press="onCloseDialog" type="Reject"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
