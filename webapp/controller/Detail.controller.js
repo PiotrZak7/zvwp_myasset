@@ -77,7 +77,7 @@ sap.ui.define([
 			var oIDItem = sap.ui.core.Fragment.byId("newRateProduct", "txtItem");
 			var oDescRate = sap.ui.core.Fragment.byId("newRateProduct", "txtRateDesc");
 			var oRateNumber = sap.ui.core.Fragment.byId("newRateProduct", "riRaitingProduct");
-			
+
 			oIDItem.getText();
 			oDescRate.getValue();
 			oRateNumber.getValue();
@@ -92,8 +92,7 @@ sap.ui.define([
 
 			var oNewServiceEntry = {
 				"IdAsset": oAsset.getText(),
-				// "Requestor":  sap.ushell.Container.getService("UserInfo").getId() ,
-				"Requestor": "DLXPSFN",
+				"Requestor": sap.ushell.Container.getService("UserInfo").getId(),
 				"Serviceman": "",
 				"ContactName": "",
 				"PhoneNo": "",
@@ -213,6 +212,9 @@ sap.ui.define([
 				});
 				this._bindView("/" + sObjectPath);
 			}.bind(this));
+			this.getView().byId("objectHeader").setIcon(this.getOwnerComponent().getManifestObject().getEntry("/sap.app").dataSources.mainService
+				.uri + "MyAssetSet('" + sObjectId + "')/ToPhoto/$value");
+
 		},
 
 		/**

@@ -1,9 +1,9 @@
 <mvc:View controllerName="com.zvwp.asset.myasset.zvwp_asset_myasset.controller.Detail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
-	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}" 
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
-			<ObjectHeader id="objectHeader" title="{Name}" icon="{/ToPhoto}" iconDensityAware="false">
+			<ObjectHeader id="objectHeader" title="{Name}" iconDensityAware="false" icon="{/ToPhoto('1')/$value}" >
 				<attributes>
 					<ObjectAttribute title="{i18n>idAsset}" text="{IdAsset}"/>
 					<ObjectAttribute title="{i18n>CreateOn}" text="{path: 'Begda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
