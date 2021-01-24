@@ -41,7 +41,7 @@
 				<footer>
 					<OverflowToolbar>
 						<ToolbarSpacer/>
-						<Button type="Accept" tooltip="Rate service after service close" text="{i18n>rateService}" press="onPressRateService" enabled="true"/>
+						<Button type="Accept" tooltip="Rate service after service close" text="{i18n>RateService}" press="onPressRateService" enabled="true"/>
 					</OverflowToolbar>
 				</footer>
 			</Page>
