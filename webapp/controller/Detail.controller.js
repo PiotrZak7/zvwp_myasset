@@ -4,8 +4,9 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
 	"com/zvwp/asset/myasset/zvwp_asset_myasset/model/formatter",
 	"sap/m/MessageToast",
-	"sap/m/MessageBox"
-], function (BaseController, JSONModel, formatter, MessageToast, MessageBox) {
+	"sap/m/MessageBox",
+	"sap/ui/core/Fragment"
+], function (BaseController, JSONModel, formatter, MessageToast, MessageBox, Fragment) {
 	"use strict";
 
 	return BaseController.extend("com.zvwp.asset.myasset.zvwp_asset_myasset.controller.Detail", {
@@ -181,9 +182,11 @@ sap.ui.define([
 			var sTitle,
 				iTotalItems = oEvent.getParameter("total"),
 				oViewModel = this.getModel("detailView");
+				
+			var idFragment = sap.ui.core.Fragment.createId("fragmentServices", "devList");
 
 			// only update the counter if the length is final
-			if (this.byId("devList").getBinding("items").isLengthFinal()) {
+			if (this.byId(idFragment).getBinding("items").isLengthFinal()) {
 				if (iTotalItems) {
 					sTitle = this.getResourceBundle().getText("detailLineItemTableHeadingCount", [iTotalItems]);
 				} else {
@@ -191,6 +194,7 @@ sap.ui.define([
 					sTitle = this.getResourceBundle().getText("detailLineItemTableHeading");
 				}
 				oViewModel.setProperty("/lineItemListTitle", sTitle);
+				oViewModel.setProperty("/countServices", iTotalItems);
 			}
 		},
 

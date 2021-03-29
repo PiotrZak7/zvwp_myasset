@@ -1,9 +1,9 @@
 <mvc:View controllerName="com.zvwp.asset.myasset.zvwp_asset_myasset.controller.Detail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
-	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}" 
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
-			<ObjectHeader id="objectHeader" title="{Name}" iconDensityAware="false" icon="{/ToPhoto('1')/$value}" >
+			<ObjectHeader id="objectHeader" title="{Name}" iconDensityAware="false" icon="{/ToPhoto('1')/$value}">
 				<attributes>
 					<ObjectAttribute title="{i18n>idAsset}" text="{IdAsset}"/>
 					<ObjectAttribute title="{i18n>CreateOn}" text="{path: 'Begda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
@@ -14,18 +14,16 @@
 					<IconTabFilter id="iconTabBarFilter1" text="{i18n>DeviceInfo}" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}">
 						<core:Fragment fragmentName="com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.DeviceOverview" id="fragmentDeviceOverview" type="XML"/>
 					</IconTabFilter>
-					<IconTabFilter id="iconTabBarFilter2" text="{i18n>UserInfo}" icon="sap-icon://employee" tooltip="{i18n>detailIconTabBarAttachments}">
+					<IconTabFilter id="iconTabBarFilter2" text="{i18n>Services}" icon="sap-icon://wrench" tooltip="{i18n>detailIconTabBarAttachments}"
+						count="{detailView>/countServices}">
+						<core:Fragment id="fragmentServices" fragmentName="com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.Services" type="XML"/>
+					</IconTabFilter>
+					<IconTabFilter id="iconTabBarFilter3" text="{i18n>AutoOrder}" icon="sap-icon://order-status" tooltip="Automatyczne zamówienia"
+						visible="{= ${IsLeasing} === 'X'}">
 						<core:Fragment fragmentName="com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.UserOverview" id="fragmentUserOverview" type="XML"/>
 					</IconTabFilter>
 				</items>
 			</IconTabBar>
-			<List id="devList" headerText="{detailView>/lineItemListTitle}" items="{ToServices}" updateFinished=".onListUpdateFinished">
-				<items>
-					<StandardListItem title="{IdService} {DemageDesc}" iconInset="false" icon="sap-icon://wrench" iconDensityAware="false"
-						type="Navigation" press="onListItemPressed" info="{path: 'Status', formatter: '.formatter.formatStatusName'}"
-						infoState="{path: 'Status', formatter: '.formatter.formatStatus'}"/>
-				</items>
-			</List>
 		</semantic:content>
 		<semantic:customFooterContent>
 			<Button visible="true" text="{i18n>CreateService}" enabled="true" icon="sap-icon://wrench" press="onNewServicePress" type="Reject"></Button>

@@ -5,6 +5,8 @@
 			labelSpanL="3" emptySpanL="4" columnsL="1" labelSpanM="3" emptySpanM="4" columnsM="1" labelSpanS="12" emptySpanS="0" adjustLabelSpan="false"
 			singleContainerFullSize="true">
 			<f:content>
+				<Label text="{i18n>CreateOn}"/>
+				<Text text="{path: 'Begda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
 				<Label text="{i18n>serialNumber}"/>
 				<Text text="{SerialNumber}"/>
 				<Label text="{i18n>Description}"/>
@@ -13,7 +15,10 @@
 				<Text text="{VendorNr}"/>
 				<Label text="{i18n>VendorName}"/>
 				<Text text="{VendorName}"/>
+				<Label text="{i18n>leasing}"/>
+				<Text text="{= ${IsLeasing} === 'X' ? 'Tak' : 'Nie' }"/>
 			</f:content>
+			
 		</f:SimpleForm>
 	</VBox>
 </core:FragmentDefinition>

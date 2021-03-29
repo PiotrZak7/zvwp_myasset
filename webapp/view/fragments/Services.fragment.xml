@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<VBox class="sapUiResponsiveMargin">
+		<f:SimpleForm id="sfDeviceOverview">
+			<f:content>
+				<List id="devList" headerText="{detailView>/lineItemListTitle}" items="{ToServices}" updateFinished=".onListUpdateFinished">
+					<items>
+						<StandardListItem title="{IdService} {DemageDesc}" iconInset="false" icon="sap-icon://wrench" iconDensityAware="false" type="Navigation"
+							press="onListItemPressed" info="{path: 'Status', formatter: '.formatter.formatStatusName'}"
+							infoState="{path: 'Status', formatter: '.formatter.formatStatus'}"/>
+					</items>
+				</List>
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+</core:FragmentDefinition>
