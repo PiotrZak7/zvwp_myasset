@@ -2,7 +2,7 @@
 	<VBox class="sapUiResponsiveMargin">
 		<f:SimpleForm id="sfDeviceOverview">
 			<f:content>
-				<List id="devList" headerText="{detailView>/lineItemListTitle}" items="{ToServices}" updateFinished=".onListUpdateFinished">
+				<List id="servicesList" headerText="{detailView>/lineItemListTitle}" items="{ToServices}" updateFinished=".onListUpdateFinished">
 					<items>
 						<StandardListItem title="{IdService} {DemageDesc}" iconInset="false" icon="sap-icon://wrench" iconDensityAware="false" type="Navigation"
 							press="onListItemPressed" info="{path: 'Status', formatter: '.formatter.formatStatusName'}"

@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<VBox class="sapUiResponsiveMargin">
+		<f:SimpleForm >
+			<f:content>
+				<List id="autoReqList" headerText="{i18n>AutoOrder}" items="{ToAutoRequest}" updateFinished=".onListUpdateFinished">
+					<items>
+						<StandardListItem title="Numer zamówienia - {idDoc}" iconInset="false" icon="sap-icon://order-status" iconDensityAware="false" type="Navigation"
+							press="onListAutoReqItemPressed" info="{path: 'crDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
+					</items>
+				</List>
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+</core:FragmentDefinition>

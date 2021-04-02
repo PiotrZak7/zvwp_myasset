@@ -110,6 +110,11 @@
 					"pattern": "services/{serviceId}",
 					"name": "service",
 					"target": "service"
+				},
+				{
+					"pattern": "autoreq/{autoreqId}",
+					"name": "autoreq",
+					"target": "autoreq"
 				}
 			],
 			"targets": {
@@ -139,6 +144,11 @@
 				"service": {
 					"viewType": "XML",
 					"viewName": "ServiceDetail",
+					"viewLevel": 3
+				},
+				"autoreq": {
+					"viewType": "XML",
+					"viewName": "AutoRequest",
 					"viewLevel": 3
 				}
 			}

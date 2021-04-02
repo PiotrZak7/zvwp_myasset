@@ -158,6 +158,18 @@ sap.ui.define([
 		 * Event handler when the share in JAM button has been clicked
 		 * @public
 		 */
+		 
+		 onListAutoReqItemPressed: function (oEvent) {
+			var oItem, oCtx;
+
+			oItem = oEvent.getSource();
+			oCtx = oItem.getBindingContext();
+
+			this.getRouter().navTo("autoreq", {
+				autoreqId: oCtx.getProperty("idDoc")
+			});
+
+		},
 		onShareInJamPress: function () {
 			var oViewModel = this.getModel("detailView"),
 				oShareDialog = sap.ui.getCore().createComponent({
@@ -182,10 +194,11 @@ sap.ui.define([
 			var sTitle,
 				iTotalItems = oEvent.getParameter("total"),
 				oViewModel = this.getModel("detailView");
-				
-			var idFragment = sap.ui.core.Fragment.createId("fragmentServices", "devList");
 
+			var idFragment = sap.ui.core.Fragment.createId("fragmentServices", "servicesList");
+			var idFragmentAutoReq = sap.ui.core.Fragment.createId("fragmentAutoRequest", "autoReqList");
 			// only update the counter if the length is final
+			var countReq = this.byId(idFragmentAutoReq).getBinding("items").getLength();
 			if (this.byId(idFragment).getBinding("items").isLengthFinal()) {
 				if (iTotalItems) {
 					sTitle = this.getResourceBundle().getText("detailLineItemTableHeadingCount", [iTotalItems]);
@@ -195,6 +208,7 @@ sap.ui.define([
 				}
 				oViewModel.setProperty("/lineItemListTitle", sTitle);
 				oViewModel.setProperty("/countServices", iTotalItems);
+				oViewModel.setProperty("/countAutoReq", countReq);
 			}
 		},
 

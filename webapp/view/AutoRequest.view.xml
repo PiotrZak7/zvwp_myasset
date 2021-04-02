@@ -1,0 +1,77 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.zvwp.asset.myasset.zvwp_asset_myasset.controller.AutoRequest" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:f="sap.ui.layout.form">
+	<App>
+		<pages>
+			<Page id="Page" title="Zamówienie: {idDoc}" showNavButton="true" navButtonPress="onNavBack" showFooter="true">
+				<content>
+					<ObjectHeader id="oh1" responsive="true" title="Numer zamówienia: {idDoc}" titleActive="false" numberState="None"
+						backgroundDesign="Translucent">
+						<statuses>
+							<ObjectStatus title="" text=" "/>
+						</statuses>
+						<attributes>
+							<ObjectAttribute id="idReq" title="Numer zamówienia" text="{idDoc}"/>
+							<ObjectAttribute title="Data utworzenia"
+								text="{path: 'crDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy HH:mm' } }"/>
+						</attributes>
+					</ObjectHeader>
+					<f:SimpleForm id="creationSimpleForm" title="Dane szczególowe zamówienia" editable="true" layout="ResponsiveGridLayout" labelSpanXL="-1"
+						emptySpanXL="-1" columnsXL="-1" labelSpanL="3" emptySpanL="4" columnsL="1" labelSpanM="3" emptySpanM="4" columnsM="1" labelSpanS="12"
+						emptySpanS="0" adjustLabelSpan="false" singleContainerFullSize="true">
+						<f:content>
+							<Label text="Wnioskujący"/>
+							<Text text="{creator} - {creatorName}"/>
+							<Label text="Numer kontrolny"/>
+							<Text text="{creatorPernr}"/>
+							<Label text="Data utworzenia zamówienia "/>
+							<Text text="{path: 'crDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy HH:mm' } }"/>
+							<Label text="Powód"/>
+							<Text text="{orderReason}"/>
+						</f:content>
+					</f:SimpleForm>
+					<f:SimpleForm id="OrderPosSimpleForm" title="Pozycje zamówienia" editable="true" layout="ResponsiveGridLayout">
+						<f:content>
+							<Table id="table" width="auto" items="{ToPos}" noDataText="{worklistView>/tableNoDataText}"
+								busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished"
+								delete="onDelete">
+								<columns>
+									<Column id="idPos" demandPopin="true">
+										<Text text="Numer pozycji" id="nameColumnTitle"/>
+									</Column>
+									<Column demandPopin="true">
+										<Text text="Nazwa produktu"/>
+									</Column>
+									<Column demandPopin="true">
+										<Text text="Ilość"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem >
+										<cells>
+											<Text text="{idPos}"/>
+										</cells>
+										<cells>
+											<Text text="{ItemName}"/>
+										</cells>
+										<cells>
+											<Text text="{Quantity}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+				<footer>
+					<Bar design="Auto">
+						<contentRight>
+							<Button id="autoReqAppBTN" text="Potwierdź" type="Accept" press="handleApproveReqBTN"/>
+							<Button id="autoReqRejBTN" text="Odrzuć" type="Reject" press="handleApproveReqBTN"/>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -19,8 +19,9 @@
 						<core:Fragment id="fragmentServices" fragmentName="com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.Services" type="XML"/>
 					</IconTabFilter>
 					<IconTabFilter id="iconTabBarFilter3" text="{i18n>AutoOrder}" icon="sap-icon://order-status" tooltip="Automatyczne zamówienia"
-						visible="{= ${IsLeasing} === 'X'}">
-						<core:Fragment fragmentName="com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.UserOverview" id="fragmentUserOverview" type="XML"/>
+						visible="{= ${IsLeasing} === 'X'}" count="{detailView>/countAutoReq}">
+						<core:Fragment fragmentName="com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.AutomaticRequest" id="fragmentAutoRequest" type="XML"
+						/>
 					</IconTabFilter>
 				</items>
 			</IconTabBar>
@@ -32,7 +33,7 @@
 			<semantic:PositiveAction text="Potwierdz dla inwentury" enabled="{= ${Rating} === '1' }" press="onInweturaPress"/>
 		</semantic:positiveAction>
 		<semantic:positiveAction>
-			<semantic:PositiveAction text="Wystaw opinię" press="onOpinionPress"/>
+			<semantic:PositiveAction text="Wystaw opinię" press="onOpinionPress" visible="false"/>
 		</semantic:positiveAction>
 	</semantic:DetailPage>
 </mvc:View>
