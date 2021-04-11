@@ -2,7 +2,7 @@
 	<VBox class="sapUiResponsiveMargin">
 		<f:SimpleForm >
 			<f:content>
-				<List id="autoReqList" headerText="{i18n>AutoOrder}" items="{ToAutoRequest}" updateFinished=".onListUpdateFinished">
+				<List id="autoReqList" headerText="{i18n>AutoOrder}" items="{ToAutoRequest}">
 					<items>
 						<StandardListItem title="Numer zamówienia - {idDoc}" iconInset="false" icon="sap-icon://order-status" iconDensityAware="false" type="Navigation"
 							press="onListAutoReqItemPressed" info="{path: 'crDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>

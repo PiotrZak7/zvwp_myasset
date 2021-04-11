@@ -21,17 +21,21 @@ sap.ui.define([], function () {
 			return parseFloat(sValue);
 
 		},
+	
 		formatStatus: function (fValue) {
 			var sStatus;
 			switch (fValue) {
 			case "001":
-				sStatus = "Success";
+				sStatus = "Error";
 				break;
 			case "002":
 				sStatus = "Warning";
 				break;
 			case "003":
-				sStatus = "Error";
+				sStatus = "Success";
+				break;
+			case "004":
+				sStatus = "None";
 				break;
 			default:
 				sStatus = "None";
@@ -51,6 +55,9 @@ sap.ui.define([], function () {
 				break;
 			case "003":
 				sStatusName = this.getResourceBundle().getText("baseFormatStateNameClosed");
+				break;
+			case "004":
+				sStatusName = this.getResourceBundle().getText("baseFormatStateNameApproved");
 				break;
 			default:
 				sStatusName = this.getResourceBundle().getText("baseFormatStateNameNone");
