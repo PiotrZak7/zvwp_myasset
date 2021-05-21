@@ -42,35 +42,35 @@ sap.ui.define([
 		 * Event handler when the share by E-Mail button has been clicked
 		 * @public
 		 */
-		onShareEmailPress: function () {
-			var oViewModel = this.getModel("detailView");
 
-			sap.m.URLHelper.triggerEmail(
-				null,
-				oViewModel.getProperty("/shareSendEmailSubject"),
-				oViewModel.getProperty("/shareSendEmailMessage")
-			);
-		},
-
-		_getDialog: function (oDialogType) {
-			if (!this._oDialog) {
-				if (oDialogType === 'Service') {
-					this._oDialog = sap.ui.xmlfragment("newService", "com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.DeviceRequest", this);
-				} else {
-					this._oDialog = sap.ui.xmlfragment("newRateProduct", "com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.ProductRate", this);
-				}
-
-				this.getView().addDependent(this._oDialog);
+		onIconTabBarSelect: function (oEvent) {
+			var oIconTabBar = this.getView().byId("iconTabBar");
+			if (oIconTabBar.getSelectedKey() === '02') {
+				this.getView().byId("btnServiceCreate").setVisible(true);
+			} else {
+				this.getView().byId("btnServiceCreate").setVisible(false);
 			}
-			return this._oDialog;
+
 		},
+		// _getDialog: function (oDialogType) {
+		// 	if (!this._oDialog) {
+		// 		if (oDialogType === 'Service') {
+		// 			this._oDialog = sap.ui.xmlfragment("newService", "com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.DeviceRequest", this);
+		// 		} else {
+		// 			this._oDialog = sap.ui.xmlfragment("newRateProduct", "com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.ProductRate", this);
+		// 		}
+
+		// 		this.getView().addDependent(this._oDialog);
+		// 	}
+		// 	return this._oDialog;
+		// },
 
 		onNewServicePress: function (oEvent) {
 			this._getDialog('Service').open();
 		},
 
 		onOpinionPress: function (oEvent) {
-			this._getDialog('Opinion').open();
+			this._getDialog('Rate').open();
 		},
 		onRateProductSave: function (oEvent) {
 			var oModel = this.getModel();
@@ -158,8 +158,8 @@ sap.ui.define([
 		 * Event handler when the share in JAM button has been clicked
 		 * @public
 		 */
-		 
-		 onListAutoReqItemPressed: function (oEvent) {
+
+		onListAutoReqItemPressed: function (oEvent) {
 			var oItem, oCtx;
 
 			oItem = oEvent.getSource();

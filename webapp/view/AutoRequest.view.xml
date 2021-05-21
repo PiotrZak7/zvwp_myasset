@@ -66,8 +66,7 @@
 				<footer>
 					<Bar design="Auto">
 						<contentRight>
-							<Button id="autoReqAppBTN" text="Potwierdź" type="Accept" press="handleApproveReqBTN"/>
-							<Button id="autoReqRejBTN" text="Odrzuć" type="Reject" press="handleApproveReqBTN"/>
+							<Button id="autoReqRejBTN" text="Odrzuć" visible="{= ${status} === '03'}" type="Reject" press="onRejectAutoRequest"/>
 						</contentRight>
 					</Bar>
 				</footer>

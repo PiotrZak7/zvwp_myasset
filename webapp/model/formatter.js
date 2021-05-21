@@ -21,7 +21,7 @@ sap.ui.define([], function () {
 			return parseFloat(sValue);
 
 		},
-	
+
 		formatStatus: function (fValue) {
 			var sStatus;
 			switch (fValue) {
@@ -36,6 +36,21 @@ sap.ui.define([], function () {
 				break;
 			case "004":
 				sStatus = "None";
+				break;
+			default:
+				sStatus = "None";
+			}
+			return sStatus;
+		},
+
+		formatStatusAutoReq: function (fValue) {
+			var sStatus;
+			switch (fValue) {
+			case "01":
+				sStatus = "Warning";
+				break;
+			case "03":
+				sStatus = "Success";
 				break;
 			default:
 				sStatus = "None";
@@ -58,6 +73,21 @@ sap.ui.define([], function () {
 				break;
 			case "004":
 				sStatusName = this.getResourceBundle().getText("baseFormatStateNameApproved");
+				break;
+			default:
+				sStatusName = this.getResourceBundle().getText("baseFormatStateNameNone");
+			}
+			return sStatusName;
+		},
+			formatStatusNameAutoReq: function (fValue) {
+			var sStatusName;
+
+			switch (fValue) {
+			case "01":
+				sStatusName = this.getResourceBundle().getText("stateNameAutoReqSend");
+				break;
+			case "03":
+				sStatusName = this.getResourceBundle().getText("stateNameAutoReqApprove");
 				break;
 			default:
 				sStatusName = this.getResourceBundle().getText("baseFormatStateNameNone");

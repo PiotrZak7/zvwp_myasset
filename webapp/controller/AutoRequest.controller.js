@@ -38,37 +38,29 @@ sap.ui.define([
 			});
 		},
 
-		onRateSave: function (oEvent) {
-			var oModel = this.getModel();
-			var oControlRi = sap.ui.core.Fragment.byId("rateService", "riRaitingNew");
-			var oValueControl = oControlRi.getValue();
-			var oValueObject = this.getView().getBindingContext().getObject();
-
-			oValueObject.Rating = oControlRi.getValue().toString();
-			if (oValueControl) {
-				oModel.update(this.getView().getBindingContext().getPath(), oValueObject, {
-					success: function (oData) {
-						this.onCloseDialog();
-
-					}.bind(this),
-					error: function () {
-
-					}.bind(this)
-				});
-			}
-
+		onRejectAutoRequest: function (oEvent) {
+			this._getDialog('AutoRequest').open();
 		},
 
-		_getDialog: function () {
-			if (!this._oDialog) {
-				this._oDialog = sap.ui.xmlfragment("rateService", "com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.ServiceRate", this);
-				this.getView().addDependent(this._oDialog);
-			}
-			return this._oDialog;
-		},
+		onRejectSave: function (oEvent) {
+			// var oModel = this.getModel();
+			// var oControlRi = sap.ui.core.Fragment.byId("rateService", "riRaitingNew");
+			// var oValueControl = oControlRi.getValue();
+			// var oValueObject = this.getView().getBindingContext().getObject();
 
-		onPressRateService: function (oEvent) {
-			this._getDialog().open();
+			// oValueObject.Rating = oControlRi.getValue().toString();
+			// if (oValueControl) {
+			// 	oModel.update(this.getView().getBindingContext().getPath(), oValueObject, {
+			// 		success: function (oData) {
+			// 			this.onCloseDialog();
+
+			// 		}.bind(this),
+			// 		error: function () {
+
+			// 		}.bind(this)
+			// 	});
+			// }
+
 		},
 
 		_onBindingChange: function (oEvent) {

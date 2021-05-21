@@ -9,25 +9,25 @@
 					<ObjectAttribute title="{i18n>CreateOn}" text="{path: 'Begda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
 				</attributes>
 			</ObjectHeader>
-			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
+			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" select="onIconTabBarSelect">
 				<items>
-					<IconTabFilter id="iconTabBarFilter1" text="{i18n>DeviceInfo}" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}">
+					<IconTabFilter id="iconTabBarFilter1" text="{i18n>DeviceInfo}" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}" key="01">
 						<core:Fragment fragmentName="com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.DeviceOverview" id="fragmentDeviceOverview" type="XML"/>
 					</IconTabFilter>
 					<IconTabFilter id="iconTabBarFilter2" text="{i18n>Services}" icon="sap-icon://wrench" tooltip="{i18n>detailIconTabBarAttachments}"
-						count="{detailView>/countServices}">
+						count="{detailView>/countServices}" key="02">
 						<core:Fragment id="fragmentServices" fragmentName="com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.Services" type="XML"/>
 					</IconTabFilter>
 					<IconTabFilter id="iconTabBarFilter3" text="{i18n>AutoOrder}" icon="sap-icon://order-status" tooltip="Automatyczne zamówienia"
-						visible="{= ${IsLeasing} === 'X'}" count="{detailView>/countAutoReq}">
-						<core:Fragment fragmentName="com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.AutomaticRequest" id="fragmentAutoRequest" type="XML"
-						/>
+						visible="{= ${IsLeasing} === 'X'}" count="{detailView>/countAutoReq}" key="03">
+						<core:Fragment fragmentName="com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.AutomaticRequest" id="fragmentAutoRequest" type="XML"/>
 					</IconTabFilter>
 				</items>
 			</IconTabBar>
 		</semantic:content>
 		<semantic:customFooterContent>
-			<Button visible="true" text="{i18n>CreateService}" enabled="true" icon="sap-icon://wrench" press="onNewServicePress" type="Reject"></Button>
+			<Button id="btnServiceCreate" visible="false" text="{i18n>CreateService}" enabled="true" icon="sap-icon://wrench" press="onNewServicePress"
+				type="Reject"></Button>
 		</semantic:customFooterContent>
 		<semantic:positiveAction>
 			<semantic:PositiveAction text="Potwierdz dla inwentury" enabled="{= ${Rating} === '1' }" press="onInweturaPress"/>

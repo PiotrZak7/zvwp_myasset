@@ -4,8 +4,11 @@
 			<f:content>
 				<List id="autoReqList" headerText="{i18n>AutoOrder}" items="{ToAutoRequest}">
 					<items>
-						<StandardListItem title="Numer zamówienia - {idDoc}" iconInset="false" icon="sap-icon://order-status" iconDensityAware="false" type="Navigation"
-							press="onListAutoReqItemPressed" info="{path: 'crDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
+						<StandardListItem title="Numer zamówienia - {idDoc} "
+							description="{path: 'crDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }" iconInset="false"
+							icon="sap-icon://order-status" iconDensityAware="false" type="Navigation" press="onListAutoReqItemPressed"
+							info="{path: 'status', formatter: '.formatter.formatStatusNameAutoReq'}"
+							infoState="{path: 'status', formatter: '.formatter.formatStatusAutoReq'}"/>
 					</items>
 				</List>
 			</f:content>

@@ -33,6 +33,27 @@ sap.ui.define([
 			this._oDialog = null;
 		},
 
+		_getDialog: function (oDialogType) {
+			if (!this._oDialog) {
+
+				switch (oDialogType) {
+				case "Service":
+					this._oDialog = sap.ui.xmlfragment("newService", "com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.DeviceRequest", this);
+					break;
+				case "Rate":
+					this._oDialog = sap.ui.xmlfragment("newRateProduct", "com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.ProductRate", this);
+					break;
+				case "AutoRequest":
+					this._oDialog = sap.ui.xmlfragment("rejectAutoRequest",
+						"com.zvwp.asset.myasset.zvwp_asset_myasset.view.fragments.AutoRequestReject", this);
+					break;
+				}
+
+				this.getView().addDependent(this._oDialog);
+			}
+			return this._oDialog;
+		},
+
 		/**
 		 * Convenience method for setting the view model in every controller of the application.
 		 * @public

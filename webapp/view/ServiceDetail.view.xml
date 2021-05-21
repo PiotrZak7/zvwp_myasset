@@ -30,9 +30,9 @@
 										state="{path: 'Status', formatter: '.formatter.formatStatus'}"/>
 									<Label text="{i18n>ServiceMan}"/>
 									<Text text="{ServicemanName}"/>
-									<Label text="{i18n>Rating}" labelFor="RI_L"/>
+									<Label text="{i18n>Rating}" labelFor="riRaiting"/>
 									<RatingIndicator id="riRaiting" displayOnly="true" maxValue="5" class="sapUiSmallMarginBottom"
-										value="{path: 'Rating', formatter : '.formatter.parseFloat'}" iconSize="22px"/>
+										value="{path: 'Rating', formatter : '.formatter.parseFloat'}" iconSize="22px" visible="{= ${Status} === '003'}"/>
 								</f:content>
 							</f:SimpleForm>
 						</content>
@@ -41,7 +41,8 @@
 				<footer>
 					<OverflowToolbar>
 						<ToolbarSpacer/>
-						<Button type="Accept" tooltip="Rate service after service close" text="{i18n>RateService}" press="onPressRateService" enabled="true"/>
+						<Button type="Accept" visible="{= ${Rating} === '0' &amp;&amp; ${Status} === '003'}" tooltip="Rate service after service close" text="{i18n>RateService}"
+							press="onPressRateService" enabled="true"/>
 					</OverflowToolbar>
 				</footer>
 			</Page>
