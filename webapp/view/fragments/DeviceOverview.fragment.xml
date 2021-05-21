@@ -9,16 +9,19 @@
 				<Text text="{path: 'Begda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
 				<Label text="{i18n>serialNumber}"/>
 				<Text text="{SerialNumber}"/>
-				<Label text="{i18n>Description}"/>
-				<Text text="{Description}"/>
-				<Label text="{i18n>VendorNr}"/>
-				<Text text="{VendorNr}"/>
-				<Label text="{i18n>VendorName}"/>
-				<Text text="{VendorName}"/>
+				<!--<Label text="{i18n>Description}"/>-->
+				<!--<Text text="{Description}"/>-->
+				<!--<Label text="{i18n>VendorNr}"/>-->
+				<!--<Text text="{VendorNr}"/>-->
+				<!--<Label text="{i18n>VendorName}"/>-->
+				<!--<Text text="{VendorName}"/>-->
 				<Label text="{i18n>leasing}"/>
 				<Text text="{= ${IsLeasing} === 'X' ? 'Tak' : 'Nie' }"/>
+				<Label text="{i18n>leasingFrom}" visible="{= ${IsLeasing} === 'X'}"/>
+				<Text text="{path: 'LeasingFrom', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
+				<Label text="{i18n>leasingTo}" visible="{= ${IsLeasing} === 'X'}"/>
+				<Text text="{path: 'LeasingTo', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd MMM yyyy' } }"/>
 			</f:content>
-			
 		</f:SimpleForm>
 	</VBox>
 </core:FragmentDefinition>
